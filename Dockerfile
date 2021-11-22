@@ -19,4 +19,4 @@ RUN apt-get install sshpass -y
 RUN sed -i 's/#host_key_checking = False/host_key_checking = False/' /etc/ansible/ansible.cfg
 
 
-CMD exec java -Dorg.jenkinsci.remoting.engine.JnlpProtocol3.disabled=true -cp /home/jenkins-slave/agent.jar hudson.remoting.jnlp.Main -headless -url ${JENKINS_URL} -workDir ${JENKINS_AGENT_WORKDIR} ${JENKINS_SECRET} ${JENKINS_AGENT_NAME}
+CMD exec java -Dorg.apache.commons.jelly.tags.fmt.timeZone=$TZ -Dorg.jenkinsci.remoting.engine.JnlpProtocol3.disabled=true -cp /home/jenkins-slave/agent.jar hudson.remoting.jnlp.Main -headless -url ${JENKINS_URL} -workDir ${JENKINS_AGENT_WORKDIR} ${JENKINS_SECRET} ${JENKINS_AGENT_NAME}
